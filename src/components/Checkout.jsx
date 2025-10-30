@@ -1,21 +1,18 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import SuccessModal from "./SuccessModal";
 
 export default function Checkout({ isOpen, onClose, cartItems, total }) {
   const dialogRef = useRef();
+  const [successOpen, setSuccessOpen] = useState(false);
 
-  // Open/close dialog
   useEffect(() => {
     if (dialogRef.current) {
-      if (isOpen) {
-        dialogRef.current.showModal();
-      } else {
-        dialogRef.current.close();
-      }
+      if (isOpen) dialogRef.current.showModal();
+      else dialogRef.current.close();
     }
   }, [isOpen]);
 
-  // Close when clicking outside
   useEffect(() => {
     const dialog = dialogRef.current;
     const handleClickOutside = (e) => {
@@ -23,34 +20,50 @@ export default function Checkout({ isOpen, onClose, cartItems, total }) {
         onClose();
       }
     };
-
     if (isOpen) document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen, onClose]);
 
-  return createPortal(
-    <dialog ref={dialogRef} className="modal">
-      <h2 className="center">تسویه حساب</h2>
-      <div className="control">
-        <label htmlFor="name">نام و نام خانوادگی</label>
-        <input id="name" type="text" placeholder="نام شما" />
-      </div>
-      <div className="control">
-        <label htmlFor="email">ایمیل</label>
-        <input id="email" type="email" placeholder="ایمیل شما" />
-      </div>
-      <div className="control">
-        <label htmlFor="address">آدرس</label>
-        <input id="address" type="text" placeholder="آدرس شما" />
-      </div>
+  const handleSubmitOrder = () => {
+    // Simulate successful order submission
+    onClose(); // close checkout modal
+    setTimeout(() => setSuccessOpen(true), 100); // open success modal
+  };
 
-      <div className="modal-actions">
-        <button className="text-button" onClick={onClose}>
-          بستن
-        </button>
-        <button className="button">ثبت سفارش</button>
-      </div>
-    </dialog>,
-    document.body
+  return (
+    <>
+      {createPortal(
+        <dialog ref={dialogRef} className="modal">
+          <h2 className="center">تسویه حساب</h2>
+          <div className="control">
+            <label htmlFor="name">نام و نام خانوادگی</label>
+            <input id="name" type="text" placeholder="نام شما" />
+          </div>
+          <div className="control">
+            <label htmlFor="email">ایمیل</label>
+            <input id="email" type="email" placeholder="ایمیل شما" />
+          </div>
+          <div className="control">
+            <label htmlFor="address">آدرس</label>
+            <input id="address" type="text" placeholder="آدرس شما" />
+          </div>
+
+          <div className="modal-actions">
+            <button className="text-button" onClick={onClose}>
+              بستن
+            </button>
+            <button className="button" onClick={handleSubmitOrder}>
+              ثبت سفارش
+            </button>
+          </div>
+        </dialog>,
+        document.body
+      )}
+
+      <SuccessModal
+        isOpen={successOpen}
+        onClose={() => setSuccessOpen(false)}
+      />
+    </>
   );
 }
