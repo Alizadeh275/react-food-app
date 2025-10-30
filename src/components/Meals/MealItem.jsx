@@ -9,7 +9,6 @@ export default function MealItem({ meal }) {
         <div className="meal-item-description">
           <h3>{meal.name}</h3>
           <span className="meal-item-price">${price.toFixed(2)}</span>
-
           <p>{meal.description}</p>
         </div>
         <div className="meal-item-actions">
