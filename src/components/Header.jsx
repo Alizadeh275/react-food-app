@@ -1,11 +1,17 @@
+import { useCart } from "../context/CartContext";
+
 export default function Header() {
+  const { toggleCart, cartItems } = useCart();
+
   return (
     <header id="main-header">
       <div id="title">
         <img src="/logo.jpg" alt="Logo" />
-        <h1>سفارش غذا</h1>
+        <h1>فود اپ</h1>
       </div>
-      <button className="button">سبد خرید</button>
+      <button className="button" onClick={toggleCart}>
+        سبد خرید ({cartItems.length})
+      </button>
     </header>
   );
 }

@@ -1,4 +1,7 @@
+import { useCart } from "../../context/CartContext";
+
 export default function MealItem({ meal }) {
+  const { addItem } = useCart();
   // Ensure price is numeric
   const price = Number(meal.price);
 
@@ -12,7 +15,9 @@ export default function MealItem({ meal }) {
           <p>{meal.description}</p>
         </div>
         <div className="meal-item-actions">
-          <button className="button">افزودن به سبد خرید</button>
+          <button className="button" onClick={() => addItem(meal)}>
+            افزودن به سبد خرید
+          </button>
         </div>
       </article>
     </li>
