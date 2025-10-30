@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useCart } from "../../context/CartContext";
 import Checkout from "./Checkout";
+import { convertToPersianDigits } from "../../utils/convertToPersianDigits";
 
 export default function Cart() {
   const { cartItems, isOpen, toggleCart, removeItem, updateQuantity, total } =
@@ -48,7 +49,7 @@ export default function Cart() {
             {cartItems.map((item) => (
               <li key={item.id} className="cart-item">
                 <p>
-                  {item.name} x {item.quantity}
+                  {item.name} ({convertToPersianDigits(item.quantity)} عدد)
                 </p>
                 <div className="cart-item-actions">
                   <button
@@ -68,7 +69,8 @@ export default function Cart() {
             ))}
           </ul>
           <div className="cart-total">
-            جمع کل: {total.toFixed(2)} هزار تومان
+            جمع کل: {convertToPersianDigits((total * 100).toFixed(2))} هزار
+            تومان
           </div>
           <div className="modal-actions">
             <button className="text-button" onClick={toggleCart}>
