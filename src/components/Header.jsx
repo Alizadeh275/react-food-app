@@ -1,3 +1,4 @@
+// src/components/Header.jsx
 import { useCart } from "../context/CartContext";
 
 export default function Header() {
