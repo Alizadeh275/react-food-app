@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { fetchMeals } from "../api/mealsApi";
 
 export function useMeals() {
     const [meals, setMeals] = useState([]);
@@ -8,11 +9,7 @@ export function useMeals() {
     useEffect(() => {
         async function loadMeals() {
             try {
-                const response = await fetch("http://localhost:3000/meals");
-                if (!response.ok) {
-                    throw new Error("Failed to fetch meals.");
-                }
-                const data = await response.json();
+                const data = await fetchMeals();
                 setMeals(data);
             } catch (err) {
                 setError(err.message || "Something went wrong!");
