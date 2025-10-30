@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../../context/CartContext";
 import Checkout from "./Checkout";
 
 export default function Cart() {
