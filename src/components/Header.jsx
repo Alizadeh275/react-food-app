@@ -1,5 +1,6 @@
 // src/components/Header.jsx
 import { useCart } from "../context/CartContext";
+import { convertToPersianDigits } from "../utils/convertToPersianDigits";
 
 export default function Header() {
   const { toggleCart, cartItems } = useCart();
@@ -11,7 +12,7 @@ export default function Header() {
         <h1>فود اپ</h1>
       </div>
       <button className="button" onClick={toggleCart}>
-        سبد خرید ({cartItems.length})
+        سبد خرید ({convertToPersianDigits(cartItems.length)})
       </button>
     </header>
   );
