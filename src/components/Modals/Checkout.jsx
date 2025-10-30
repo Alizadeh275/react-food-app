@@ -51,7 +51,7 @@ export default function Checkout({ isOpen, onClose, cartItems, total }) {
             </div>
 
             <div className="modal-actions">
-              <button className="text-button" onClick={onClose}>
+              <button type="button" className="text-button" onClick={onClose}>
                 بستن
               </button>
               <button type="submit" className="button">
