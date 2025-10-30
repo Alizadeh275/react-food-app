@@ -3,9 +3,9 @@ export default function Header() {
     <header id="main-header">
       <div id="title">
         <img src="/logo.jpg" alt="Logo" />
-        <h1>Food App</h1>
+        <h1>سفارش غذا</h1>
       </div>
-      <button className="button">Cart</button>
+      <button className="button">سبد خرید</button>
     </header>
   );
 }

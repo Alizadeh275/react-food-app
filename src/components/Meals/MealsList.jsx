@@ -5,13 +5,13 @@ export default function MealList() {
   const { meals, loading, error } = useMeals();
 
   if (loading) {
-    return <p className="center">Loading...</p>;
+    return <p className="center">درحال بارگذاری...</p>;
   }
 
   if (error) {
     return (
       <div className="error center">
-        <h2>Error</h2>
+        <h2>خطا</h2>
         <p>{error}</p>
       </div>
     );
