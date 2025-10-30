@@ -44,7 +44,7 @@ export default function Cart() {
     <>
       {createPortal(
         <dialog ref={dialogRef} className="modal">
-          <h2>سبد خرید شما</h2>
+          <h2>سبد خرید شما:</h2>
           <ul>
             {cartItems.map((item) => (
               <li key={item.id} className="cart-item">
