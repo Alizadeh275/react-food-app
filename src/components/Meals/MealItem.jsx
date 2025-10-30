@@ -1,9 +1,11 @@
 import { useCart } from "../../context/CartContext";
+import { convertToPersianDigits } from "../../utils/convertToPersianDigits";
 
 export default function MealItem({ meal }) {
   const { addItem } = useCart();
   // Ensure price is numeric
-  const price = Number(meal.price);
+  const price = Number(meal.price * 100);
+  const perisanPrice = convertToPersianDigits(price.toFixed(2));
 
   return (
     <li className="meal-item">
@@ -11,7 +13,7 @@ export default function MealItem({ meal }) {
         <img src={`http://localhost:3000/${meal.image}`} alt={meal.name} />
         <div className="meal-item-description">
           <h3>{meal.name}</h3>
-          <span className="meal-item-price">{price.toFixed(2)} هزارتومان</span>
+          <span className="meal-item-price">{perisanPrice} هزارتومان</span>
           <p>{meal.description}</p>
         </div>
         <div className="meal-item-actions">
