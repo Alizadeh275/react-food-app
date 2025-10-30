@@ -3,11 +3,18 @@
 * {
   box-sizing: border-box;
 }
+@font-face {
+  font-family: "IRANSans";
+  src: url("/fonts/ttf/IRANYekanBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 body {
   margin: 0;
   direction: rtl;
-  font-family: "Raleway", sans-serif;
+  font-family: "IRANSans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(#29251c, #2c2306);
