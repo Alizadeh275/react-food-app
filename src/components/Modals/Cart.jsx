@@ -74,7 +74,11 @@ export default function Cart() {
             <button className="text-button" onClick={toggleCart}>
               بستن
             </button>
-            <button className="button" onClick={handleCheckout}>
+            <button
+              disabled={cartItems.length === 0} // Disable if cart is empty
+              className="button"
+              onClick={handleCheckout}
+            >
               ثبت سفارش
             </button>
           </div>
