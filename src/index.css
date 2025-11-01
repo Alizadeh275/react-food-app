@@ -271,6 +271,20 @@ h1 {
   background-color: rgba(0, 0, 0, 0.55);
 }
 
+/* === Cart Button Custom Styles === */
+
+.cart-button {
+  display: inline-flex; /* Align icon + text in one line */
+  align-items: center; /* Vertically center icon & text */
+  gap: 0.5rem; /* Space between icon and text */
+  vertical-align: middle;
+}
+
+.cart-icon {
+  position: relative;
+  top: 3px; /* Slightly lowers the icon for baseline match */
+}
+
 .center {
   text-align: center;
 }
